@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
 	public Rigidbody2D rb;
 	public Rigidbody2D hook;
 
-	public float releaseTime = .15f;
+	public float releaseTime = 2f;
 	public float maxDragDistance = 2f;
 
 	public GameObject nextBall;

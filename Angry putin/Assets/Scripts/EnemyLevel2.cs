@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour {
-
+public class EnemyLevel2 : MonoBehaviour
+{
 	public GameObject deathEffect;
 
 	public float health = 4f;
 
 	public static int EnemiesAlive = 0;
 
-	void Start ()
+	void Start()
 	{
 		EnemiesAlive++;
 	}
 
-	void OnCollisionEnter2D (Collision2D colInfo)
+	void OnCollisionEnter2D(Collision2D colInfo)
 	{
 		if (colInfo.relativeVelocity.magnitude > health)
 		{
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	void Die ()
+	void Die()
 	{
 		Instantiate(deathEffect, transform.position, Quaternion.identity);
 
@@ -32,6 +33,13 @@ public class Enemy : MonoBehaviour {
 			Debug.Log("LEVEL WON!");
 
 		Destroy(gameObject);
-	}
+		GoToLevel3();
 
+	}
+	void GoToLevel3()
+	{
+		if (EnemiesAlive <= 0)
+			SceneManager.LoadScene(3);
+
+	}
 }
